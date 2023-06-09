@@ -7,5 +7,25 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="miglayout15-swing" level="project" />
+    <orderEntry type="library" name="jide-action-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-charts-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-common-3.7.5s10" level="project" />
+    <orderEntry type="library" name="jide-components-3.7.5s1" level="project" />
+    <orderEntry type="library" name="jide-dashboard-3.7.5s10" level="project" />
+    <orderEntry type="library" name="jide-data-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-dialogs-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-dock-3.7.5s" level="project" />
+    <orderEntry type="library" name="jide-editor-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-gantt-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-grids-3.7.5s18" level="project" />
+    <orderEntry type="library" name="jide-javadoc-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-jdaf-2.4.26" level="project" />
+    <orderEntry type="library" name="jide-pivot-3.7.5s3" level="project" />
+    <orderEntry type="library" name="jide-plaf-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-properties-3.7.5s1" level="project" />
+    <orderEntry type="library" name="jide-rss-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-shortcut-3.7.5" level="project" />
+    <orderEntry type="library" name="jide-treemap-3.7.5" level="project" />
   </component>
 </module>

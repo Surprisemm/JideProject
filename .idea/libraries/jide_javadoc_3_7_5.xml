@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-javadoc-3.7.5">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../libs/Jide/jide-javadoc-3.7.5.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

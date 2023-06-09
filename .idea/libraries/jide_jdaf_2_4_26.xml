@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-jdaf-2.4.26">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/Jide/jide-jdaf-2.4.26.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

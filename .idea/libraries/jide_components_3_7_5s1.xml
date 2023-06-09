@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-components-3.7.5s1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/jidesoft/jide-components/3.7.5s1/jide-components-3.7.5s1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-dock-3.7.5s">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/Jide/jide-dock-3.7.5s.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

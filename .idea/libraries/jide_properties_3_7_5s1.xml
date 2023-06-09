@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-properties-3.7.5s1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/Jide/jide-properties-3.7.5s1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

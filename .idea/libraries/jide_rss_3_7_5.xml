@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jide-rss-3.7.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/Jide/jide-rss-3.7.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
