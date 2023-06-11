@@ -12,6 +12,10 @@ public class MainUi extends JFrame {
     private final int tablePadding = 10;
     private final GridBagConstraints gbc;
     private final JPanel tablePanel;
+    private final int rowData = 10;
+    private final int colData = 4;
+    private Object[][] data = new Object[rowData][colData];
+    private String[] columnNames = {"Название", "Регион", "Население", "За / Против"};
     public MainUi(){
 
         super("JideTableProject");
@@ -38,6 +42,7 @@ public class MainUi extends JFrame {
 
         tablePanel.setPreferredSize(new Dimension(windowDimWidth, windowDimHeight));
 
+        setDataInArray();
 
         initTable();
 
@@ -64,14 +69,26 @@ public class MainUi extends JFrame {
 
     public void initTable(){
 
-        FilterableTableModel ftm = new FilterableTableModel(new MyTableModel());
+        MyTableModel model = new MyTableModel(data, columnNames);
+
+        FilterableTableModel ftm = new FilterableTableModel(model);
 
         JideTable jideTable = new JideTable(ftm);
 //        jideTable.setTableHeader(null);
 
+        //   model.configureCheckboxColumn(jideTable, colData - 2);
 
 
         tablePanel.add(new JideScrollPane(jideTable), gbc);
 
+    }
+
+    private void setDataInArray(){
+        for (int i = 0; i < rowData; i++) {
+            for (int j = 0; j < colData - 1; j++) {
+                data[i][j] = "Ячейка: " + i + " " + j;
+                data[i][colData - 1] = false;
+            }
+        }
     }
 }

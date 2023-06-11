@@ -1,37 +1,16 @@
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import java.util.Arrays;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 
-/**
- * Класс - модель таблицы, тут обрабатываются все указанные данные и заполняются ячейки таблицы сооответственно
- * Обрабатываются значения введенные в ячейки
- * Created by Nikita.Manzhukov on 01.06.2023
- */
 public class MyTableModel extends AbstractTableModel {
-    private final Object[][] data;
-    private final boolean[] rowEditable;
-    private final boolean[] columnEditable;
+    private Object[][] data;
+    private String[] columnNames;
 
-    private int rowData = 10; //tmp
-    private int colData = 4;
-
-
-
-    public MyTableModel() {
-
-        data =  new Object[rowData][colData];
-
-        for (int i = 0; i < rowData; i++) {
-            for (int j = 0; j < colData - 1; j++) {
-                data[i][j] = "Ячейка " + i + " " + j;
-            }
-        }
-
-        rowEditable = new boolean[getRowCount()];
-        columnEditable = new boolean[getColumnCount()];
-        // По умолчанию все строки и столбцы редактируемые
-        Arrays.fill(rowEditable, true);
-        Arrays.fill(columnEditable, true);
-
+    public MyTableModel(Object[][] data, String[] columnNames) {
+        this.data = data;
+        this.columnNames = columnNames;
     }
 
     @Override
@@ -41,65 +20,60 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        if (data.length > 0) {
-            return data[0].length;
-        }
-        return 0;
+        return columnNames.length;
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        return data[rowIndex][columnIndex];
-    }
-
-    /**
-     * При изменении значения в ячейке
-     * Ячейкам присваивается указанное значение
-     * Обновляются итоги
-     */
-    public void setValueAt(Object value, int rowIndex, int columnIndex){
-
-        data[rowIndex][columnIndex] = value;
-        fireTableCellUpdated(rowIndex, columnIndex);
-
+    public Object getValueAt(int row, int column) {
+        return data[row][column];
     }
 
     @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == columnIndex - 1) {
-            return Boolean.class; // Указываем, что последний столбец будет содержать чекбоксы
-        }
-        return super.getColumnClass(columnIndex);
-    }
-
-    @Override
-    public String getColumnName(int column) {
-        return "Column " + column;
+    public void setValueAt(Object value, int row, int column) {
+        data[row][column] = value;
+        fireTableCellUpdated(row, column);
+//        fireTableDataChanged();
     }
 
     @Override
     public boolean isCellEditable(int row, int column) {
-        return rowEditable[row] && columnEditable[column];
+        return column == 0;
     }
 
-    /**
-     * Указывает редактируемость строки
-     */
-    public void setRowEditable(int rowIndex, boolean editable) {
-        if (rowIndex >= 0 && rowIndex < rowEditable.length) {
-            rowEditable[rowIndex] = editable;
+    @Override
+    public Class<?> getColumnClass(int column) {
+        if (column == 0) {
+            return Boolean.class;
         }
+        return super.getColumnClass(column);
     }
 
-    /**
-     * Указывает редактируемость столбца
-     */
-    public void setColumnEditable(int columnIndex, boolean editable) {
-        if (columnIndex >= 0 && columnIndex < columnEditable.length) {
-            columnEditable[columnIndex] = editable;
-        }
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
     }
 
+    public void configureCheckboxColumn(JTable table, int column) {
+        TableColumn checkboxColumn = table.getColumnModel().getColumn(column);
+        checkboxColumn.setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                Boolean selected = (value != null && (Boolean) value);
+                JCheckBox checkbox = new JCheckBox();
+                checkbox.setSelected(selected);
+                checkbox.setHorizontalAlignment(SwingConstants.CENTER);
+                checkbox.setBackground(table.getBackground());
+                checkbox.setBorderPainted(true);
+                checkbox.setBorder(table.getBorder());
+                super.setValue(checkbox);
+            }
+        });
 
-
+        checkboxColumn.setCellEditor(new DefaultCellEditor(new JCheckBox()) {
+            @Override
+            public Object getCellEditorValue() {
+                return ((JCheckBox) editorComponent).isSelected();
+            }
+        });
     }
+}
