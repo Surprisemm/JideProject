@@ -14,7 +14,7 @@ public class CSVReader {
             String line;
 
             while ((line = br.readLine()) != null) {
-                String[] row = line.split(delimiter);
+                String[] row = parseCSVLine(line, delimiter);
 
                 Object[] convertedRow = new Object[row.length];
                 for (int i = 0; i < row.length; i++) {
@@ -34,6 +34,30 @@ public class CSVReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String[] parseCSVLine(String line, String delimiter) {
+        List<String> values = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+
+        boolean insideQuotes = false;
+        for (char c : line.toCharArray()) {
+            if (c == '\"') {
+                insideQuotes = !insideQuotes;
+            } else if (c == ';' && !insideQuotes) {
+                values.add(sb.toString());
+                sb.setLength(0);
+            } else if (c == ',' && !insideQuotes) {
+                values.add(sb.toString());
+                sb.setLength(0);
+            } else {
+                sb.append(c);
+            }
+        }
+
+        values.add(sb.toString());
+
+        return values.toArray(new String[0]);
     }
 
     public int getRowCount() {

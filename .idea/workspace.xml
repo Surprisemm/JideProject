@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="ПИздец2">
-      <change afterPath="$PROJECT_DIR$/src/CSVReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
+    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="csv не учитывает ковычки">
+      <change beforePath="$PROJECT_DIR$/src/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +72,7 @@
       <workItem from="1686338343683" duration="1330000" />
       <workItem from="1686339763382" duration="1857000" />
       <workItem from="1686516827202" duration="8176000" />
-      <workItem from="1686554558371" duration="4613000" />
+      <workItem from="1686554558371" duration="4916000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <created>1686341612942</created>
@@ -105,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686588887625</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="csv не учитывает ковычки">
+      <created>1686591788315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686591788315</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +131,7 @@
     <MESSAGE value="Буду делать другуб модель" />
     <MESSAGE value="ПИздец" />
     <MESSAGE value="ПИздец2" />
-    <option name="LAST_COMMIT_MESSAGE" value="ПИздец2" />
+    <MESSAGE value="csv не учитывает ковычки" />
+    <option name="LAST_COMMIT_MESSAGE" value="csv не учитывает ковычки" />
   </component>
 </project>
