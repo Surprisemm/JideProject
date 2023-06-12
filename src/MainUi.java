@@ -43,10 +43,7 @@ public class MainUi extends JFrame {
 
         tablePanel.setPreferredSize(new Dimension(windowDimWidth, windowDimHeight));
 
-        setDataInArray();
-
         initTable();
-
 
         getContentPane().add(tablePanel);
         pack();
@@ -70,40 +67,7 @@ public class MainUi extends JFrame {
 
     public void initTable(){
 
-        // MyTableModel model = new MyTableModel(data, columnNames);
-
-        DefaultTableModel model = new DefaultTableModel(){
-
-            public Class<?> getColumnClass(int columnIndex){
-                switch(columnIndex){
-
-                    case 0:
-                    case 1:
-                    default:
-                        return String.class;
-
-                    case 2:
-                        return Integer.class;
-
-                    case 3:
-                        return Boolean.class;
-                }
-            }
-
-        };
-
-        model.addColumn("Col1");
-        model.addColumn("Col2");
-        model.addColumn("Col3");
-        model.addColumn("Col4");
-
-        for (int i = 0; i < rowData; i++) {
-            model.addRow(data);
-            model.setValueAt(false,i,colData - 1);
-            model.setValueAt(i + " Row", i, 0);
-            model.setValueAt("Column Data 1", i, 1);
-            model.setValueAt("Column Data 2", i, 2);
-        }
+        MyTableModel model = new MyTableModel(columnNames);
 
         FilterableTableModel ftm = new FilterableTableModel(model);
 
@@ -117,12 +81,4 @@ public class MainUi extends JFrame {
 
     }
 
-    private void setDataInArray(){
-        for (int i = 0; i < rowData; i++) {
-            for (int j = 0; j < colData - 1; j++) {
-                data[i][j] = "Ячейка: " + i + " " + j;
-                data[i][colData - 1] = false;
-            }
-        }
-    }
 }
