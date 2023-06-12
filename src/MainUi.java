@@ -1,16 +1,21 @@
+import com.jidesoft.grid.AutoFilterTableHeader;
 import com.jidesoft.grid.FilterableTableModel;
 import com.jidesoft.grid.JideTable;
+import com.jidesoft.grid.SortableTable;
 import com.jidesoft.swing.JideScrollPane;
+import com.jidesoft.swing.JideTabbedPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class MainUi extends JFrame {
 
     private final int tablePadding = 10;
+    private SortableTable table;
     private final GridBagConstraints gbc;
     private final JPanel tablePanel;
     private final int rowData = 10;
@@ -45,6 +50,8 @@ public class MainUi extends JFrame {
 
         initTable();
 
+        cellDataToLeftSide(2);
+
         getContentPane().add(tablePanel);
         pack();
         setVisible(true);
@@ -67,18 +74,31 @@ public class MainUi extends JFrame {
 
     public void initTable(){
 
+        JideTabbedPane tabbedPane = new JideTabbedPane();
+        tabbedPane.setTabShape((JideTabbedPane.SHAPE_BOX));
+
         MyTableModel model = new MyTableModel(columnNames);
 
-        FilterableTableModel ftm = new FilterableTableModel(model);
+        table = new SortableTable(model);
+        table.setRowResizable(true);
+        table.setVariousRowHeights(true);
+        table.setSelectInsertedRows(false);
 
-        JideTable jideTable = new JideTable(ftm);
-//        jideTable.setTableHeader(null);
+        AutoFilterTableHeader header = new AutoFilterTableHeader(table);
+        header.setAutoFilterEnabled(true);
+        header.setUseNativeHeaderRenderer(true);
 
-        //   model.configureCheckboxColumn(jideTable, colData - 2);
+        table.setTableHeader(header);
 
+        tabbedPane.add("FilterableTableModel", new JScrollPane(table));
 
-        tablePanel.add(new JideScrollPane(jideTable), gbc);
+        tablePanel.add(tabbedPane, gbc);
 
     }
 
+    private void cellDataToLeftSide( int columnIndex){
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
+        table.getColumnModel().getColumn(columnIndex).setCellRenderer(leftRenderer);
+    }
 }

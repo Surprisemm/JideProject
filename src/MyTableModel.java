@@ -1,8 +1,11 @@
+import org.omg.CORBA.Object;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
+import java.util.ArrayList;
 
 public class MyTableModel extends AbstractTableModel {
     private Object[][] data;
@@ -36,14 +39,13 @@ public class MyTableModel extends AbstractTableModel {
         data[row][column] = value;
         fireTableCellUpdated(row, column);
 
-
-        for (int i = 0; i < data.length; i++) {
+       /* for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < columnNames.length; j++) {
                 System.out.print(data[i][j] + " || ");
             }
             System.out.println();
         }
-        System.out.println("===============================================");
+        System.out.println("===============================================");*/
 
     }
 
@@ -78,26 +80,17 @@ public class MyTableModel extends AbstractTableModel {
 
     private void setDataInArray(){
 
-        /*data = new Object[10][4];
-
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < columnNames.length - 1; j++) {
-                data[i][j] = "Ячейка: " + i + " " + j;
-                data[i][columnNames.length - 1] = false;
-            }
-        }*/
-
-
-
         CSVReader reader = new CSVReader();
         reader.readCSV("data.csv", ",");
 
         data = new Object[reader.getRowCount()][columnNames.length];
 
-        data = reader.getData();
+        Object[][] tmpArr = new Object[reader.getRowCount()][3];
+
+
+
+        // data = reader.getData();
 
     }
-
-
 
 }
