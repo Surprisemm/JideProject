@@ -1,3 +1,4 @@
+/*
 import java.awt.BorderLayout; import javax.swing.JFrame; import javax.swing.JScrollPane; import javax.swing.JTable; import javax.swing.table.AbstractTableModel; import javax.swing.table.TableModel; class ColorTableModel extends AbstractTableModel {  Object rowData[][] = { { "1", Boolean.TRUE }, { "2", Boolean.TRUE }, { "3", Boolean.FALSE },  { "4", Boolean.TRUE }, { "5", Boolean.FALSE }, };  String columnNames[] = { "English", "Boolean" };
 
     public int getColumnCount() {  return columnNames.length;  }
@@ -23,3 +24,4 @@ public class EditableColorColumn {
     frame.setVisible(true);
 }
 }
+*/

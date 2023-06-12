@@ -5,6 +5,7 @@ import com.jidesoft.swing.JideScrollPane;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class MainUi extends JFrame {
@@ -69,7 +70,40 @@ public class MainUi extends JFrame {
 
     public void initTable(){
 
-        MyTableModel model = new MyTableModel(data, columnNames);
+        // MyTableModel model = new MyTableModel(data, columnNames);
+
+        DefaultTableModel model = new DefaultTableModel(){
+
+            public Class<?> getColumnClass(int columnIndex){
+                switch(columnIndex){
+
+                    case 0:
+                    case 1:
+                    default:
+                        return String.class;
+
+                    case 2:
+                        return Integer.class;
+
+                    case 3:
+                        return Boolean.class;
+                }
+            }
+
+        };
+
+        model.addColumn("Col1");
+        model.addColumn("Col2");
+        model.addColumn("Col3");
+        model.addColumn("Col4");
+
+        for (int i = 0; i < rowData; i++) {
+            model.addRow(data);
+            model.setValueAt(false,i,colData - 1);
+            model.setValueAt(i + " Row", i, 0);
+            model.setValueAt("Column Data 1", i, 1);
+            model.setValueAt("Column Data 2", i, 2);
+        }
 
         FilterableTableModel ftm = new FilterableTableModel(model);
 

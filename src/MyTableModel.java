@@ -9,8 +9,12 @@ public class MyTableModel extends AbstractTableModel {
     private String[] columnNames;
 
     public MyTableModel(Object[][] data, String[] columnNames) {
+
         this.data = data;
         this.columnNames = columnNames;
+
+        setDataInArray();
+
     }
 
     @Override
@@ -32,7 +36,6 @@ public class MyTableModel extends AbstractTableModel {
     public void setValueAt(Object value, int row, int column) {
         data[row][column] = value;
         fireTableCellUpdated(row, column);
-//        fireTableDataChanged();
     }
 
     @Override
@@ -42,10 +45,21 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public Class<?> getColumnClass(int column) {
-        if (column == 0) {
-            return Boolean.class;
+
+        switch(column){
+
+            case 0:
+            case 1:
+            default:
+                return String.class;
+
+            case 2:
+                return Integer.class;
+
+            case 3:
+                return Boolean.class;
+
         }
-        return super.getColumnClass(column);
     }
 
     @Override
@@ -53,27 +67,14 @@ public class MyTableModel extends AbstractTableModel {
         return columnNames[column];
     }
 
-    public void configureCheckboxColumn(JTable table, int column) {
-        TableColumn checkboxColumn = table.getColumnModel().getColumn(column);
-        checkboxColumn.setCellRenderer(new DefaultTableCellRenderer() {
-            @Override
-            public void setValue(Object value) {
-                Boolean selected = (value != null && (Boolean) value);
-                JCheckBox checkbox = new JCheckBox();
-                checkbox.setSelected(selected);
-                checkbox.setHorizontalAlignment(SwingConstants.CENTER);
-                checkbox.setBackground(table.getBackground());
-                checkbox.setBorderPainted(true);
-                checkbox.setBorder(table.getBorder());
-                super.setValue(checkbox);
+    private void setDataInArray(){
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < columnNames.length - 1; j++) {
+                data[i][j] = "Ячейка: " + i + " " + j;
+                data[i][columnNames.length - 1] = false;
             }
-        });
-
-        checkboxColumn.setCellEditor(new DefaultCellEditor(new JCheckBox()) {
-            @Override
-            public Object getCellEditorValue() {
-                return ((JCheckBox) editorComponent).isSelected();
-            }
-        });
+        }
     }
+
+
 }
