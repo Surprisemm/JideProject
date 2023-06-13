@@ -1,5 +1,3 @@
-import org.omg.CORBA.Object;
-
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -85,12 +83,36 @@ public class MyTableModel extends AbstractTableModel {
 
         data = new Object[reader.getRowCount()][columnNames.length];
 
-        Object[][] tmpArr = new Object[reader.getRowCount()][3];
+        data = reader.getData();
+
+        for (int i = 0; i < reader.getRowCount(); i++) {
+            data[i][0] = unescapeEmojiCode(String.valueOf(data[i][0]));
+        }
+
+    }
 
 
+    private static String unescapeEmojiCode(String text) {
+        StringBuilder result = new StringBuilder();
 
-        // data = reader.getData();
+        int i = 0;
+        while (i < text.length()) {
+            if (text.charAt(i) == '\\' && i + 1 < text.length() && text.charAt(i + 1) == 'u') {
+                // Найден код эмоджи
+                String emojiCode = text.substring(i + 2, i + 6);
+                char emojiChar = (char) Integer.parseInt(emojiCode, 16);
+                result.append(emojiChar);
 
+                i += 6;
+            } else {
+                // Обычный символ
+                result.append(text.charAt(i));
+
+                i++;
+            }
+        }
+
+        return result.toString();
     }
 
 }

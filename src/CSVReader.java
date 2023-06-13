@@ -20,12 +20,12 @@ public class CSVReader {
                 for (int i = 0; i < row.length; i++) {
                     String value = row[i].trim();
 
-                    if (i < 3) {
-                        convertedRow[i] = value; // Преобразование первых трех столбцов в String
+                    if (i < 2) {
+                        convertedRow[i] = value; // Преобразование первых двух столбцов в String
+                    } else if (i == 2) {
+                        convertedRow[i] = Integer.parseInt(value); // Преобразование третьего столбца в int
                     } else if (i == 3) {
-                        convertedRow[i] = Integer.parseInt(value); // Преобразование четвертого столбца в int
-                    } else if (i == 4) {
-                        convertedRow[i] = Boolean.parseBoolean(value); // Преобразование пятого столбца в boolean
+                        convertedRow[i] = Boolean.parseBoolean(value); // Преобразование четвертого столбца в boolean
                     }
                 }
 
@@ -73,6 +73,14 @@ public class CSVReader {
         for (int i = 0; i < rowCount; i++) {
             data[i] = rows.get(i);
         }
+
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < columnCount; j++) {
+                System.out.print(data[i][j] + " || ");
+            }
+            System.out.println();
+        }
+        System.out.println("===============================================");
 
         return data;
     }

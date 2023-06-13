@@ -1,15 +1,10 @@
 import com.jidesoft.grid.AutoFilterTableHeader;
-import com.jidesoft.grid.FilterableTableModel;
-import com.jidesoft.grid.JideTable;
 import com.jidesoft.grid.SortableTable;
-import com.jidesoft.swing.JideScrollPane;
 import com.jidesoft.swing.JideTabbedPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class MainUi extends JFrame {
@@ -35,7 +30,7 @@ public class MainUi extends JFrame {
         this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setUIFont(new javax.swing.plaf.FontUIResource("Arial", Font.PLAIN, 18));
+        setUIFont(new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.PLAIN, 18));
 
         tablePanel = new JPanel(new GridBagLayout());
 
@@ -50,7 +45,7 @@ public class MainUi extends JFrame {
 
         initTable();
 
-        cellDataToLeftSide(2);
+        myCellRender();
 
         getContentPane().add(tablePanel);
         pack();
@@ -96,9 +91,14 @@ public class MainUi extends JFrame {
 
     }
 
-    private void cellDataToLeftSide( int columnIndex){
+    private void myCellRender(){
+
         DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
         leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
-        table.getColumnModel().getColumn(columnIndex).setCellRenderer(leftRenderer);
+        table.getColumnModel().getColumn(2).setCellRenderer(leftRenderer);
+
+        // EmojiTableCellRenderer emojiRenderer = new EmojiTableCellRenderer();
+        // table.getColumnModel().getColumn(0).setCellRenderer(emojiRenderer);
+
     }
 }
