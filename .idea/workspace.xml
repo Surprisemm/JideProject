@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="csv работает, нужно добавить сортировку и флаги">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов">
       <change beforePath="$PROJECT_DIR$/src/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686592132951</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов">
+      <created>1686658546604</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686658546604</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +150,7 @@
     <MESSAGE value="csv не учитывает ковычки" />
     <MESSAGE value="csv работает, нужно добавить сортировку" />
     <MESSAGE value="csv работает, нужно добавить сортировку и флаги" />
-    <option name="LAST_COMMIT_MESSAGE" value="csv работает, нужно добавить сортировку и флаги" />
+    <MESSAGE value="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов" />
   </component>
 </project>

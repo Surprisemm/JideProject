@@ -97,8 +97,5 @@ public class MainUi extends JFrame {
         leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
         table.getColumnModel().getColumn(2).setCellRenderer(leftRenderer);
 
-        // EmojiTableCellRenderer emojiRenderer = new EmojiTableCellRenderer();
-        // table.getColumnModel().getColumn(0).setCellRenderer(emojiRenderer);
-
     }
 }

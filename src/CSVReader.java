@@ -74,14 +74,6 @@ public class CSVReader {
             data[i] = rows.get(i);
         }
 
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < columnCount; j++) {
-                System.out.print(data[i][j] + " || ");
-            }
-            System.out.println();
-        }
-        System.out.println("===============================================");
-
         return data;
     }
 }
