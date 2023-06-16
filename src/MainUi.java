@@ -1,10 +1,16 @@
 import com.jidesoft.grid.AutoFilterTableHeader;
+import com.jidesoft.grid.BooleanCheckBoxCellEditor;
+import com.jidesoft.grid.CellEditorManager;
 import com.jidesoft.grid.SortableTable;
 import com.jidesoft.swing.JideTabbedPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.tree.DefaultTreeCellEditor;
 import java.awt.*;
 
 public class MainUi extends JFrame {
@@ -85,9 +91,7 @@ public class MainUi extends JFrame {
 
         table.setTableHeader(header);
 
-        tabbedPane.add("FilterableTableModel", new JScrollPane(table));
-
-        tablePanel.add(tabbedPane, gbc);
+        tablePanel.add(new JScrollPane(table), gbc);
 
     }
 
@@ -96,6 +100,26 @@ public class MainUi extends JFrame {
         DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
         leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
         table.getColumnModel().getColumn(2).setCellRenderer(leftRenderer);
+
+        TableCellRenderer checkBoxRenderer = new DefaultTableCellRenderer(){
+            private final JCheckBox checkBox = new JCheckBox();
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                checkBox.setSelected(value != null && (boolean) value);
+                checkBox.setHorizontalAlignment(SwingConstants.CENTER);
+                if (isSelected){
+                    checkBox.setBackground(table.getSelectionBackground());
+                } else {
+                    checkBox.setBackground(Color.white);
+                }
+                return checkBox;
+            }
+        };
+        table.getColumnModel().getColumn(3).setCellRenderer(checkBoxRenderer);
+        table.getColumnModel().getColumn(3).setCellEditor(new BooleanCheckBoxCellEditor());
+
+
 
     }
 }

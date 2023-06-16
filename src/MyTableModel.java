@@ -1,3 +1,5 @@
+import com.jidesoft.grid.CellEditorManager;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -14,6 +16,7 @@ public class MyTableModel extends AbstractTableModel {
         this.columnNames = columnNames;
 
         setDataInArray();
+
 
     }
 
@@ -95,24 +98,24 @@ public class MyTableModel extends AbstractTableModel {
     private static String unescapeEmojiCode(String text) {
         StringBuilder result = new StringBuilder();
 
-        int i = 0;
-        while (i < text.length()) {
-            if (text.charAt(i) == '\\' && i + 1 < text.length() && text.charAt(i + 1) == 'u') {
+        // Разделяем строку на коды символов и текст
+        String[] parts = text.split(" ");
+        for (String part : parts) {
+            if (part.startsWith("U+")) {
                 // Найден код эмоджи
-                String emojiCode = text.substring(i + 2, i + 6);
-                char emojiChar = (char) Integer.parseInt(emojiCode, 16);
-                result.append(emojiChar);
-
-                i += 6;
+                String emojiCode = part.substring(2);
+                int codePoint = Integer.parseInt(emojiCode, 16);
+                String emoji = new String(Character.toChars(codePoint));
+                result.append(emoji);
             } else {
-                // Обычный символ
-                result.append(text.charAt(i));
-
-                i++;
+                // Обычный текст
+                result.append(part);
             }
         }
 
         return result.toString();
     }
+
+
 
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов">
-      <change beforePath="$PROJECT_DIR$/src/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVReader.java" afterDir="false" />
+    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов, чекбоксы пропали&#10;&#10;Последняя версия">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +76,10 @@
       <workItem from="1686339763382" duration="1857000" />
       <workItem from="1686516827202" duration="8176000" />
       <workItem from="1686554558371" duration="10071000" />
+      <workItem from="1686668894742" duration="679000" />
+      <workItem from="1686677779128" duration="379000" />
+      <workItem from="1686918069356" duration="327000" />
+      <workItem from="1686919157058" duration="396000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <created>1686341612942</created>
