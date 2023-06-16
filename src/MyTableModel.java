@@ -1,28 +1,22 @@
-import com.jidesoft.grid.CellEditorManager;
-
-import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableColumn;
 import java.util.ArrayList;
 
 public class MyTableModel extends AbstractTableModel {
-    private Object[][] data;
+    private ArrayList<CountryInfo> data;
     private String[] columnNames;
 
     public MyTableModel(String[] columnNames) {
 
         this.columnNames = columnNames;
 
-        setDataInArray();
+        setData();
 
 
     }
 
     @Override
     public int getRowCount() {
-        return data.length;
+        return data.size();
     }
 
     @Override
@@ -32,21 +26,27 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        return data[row][column];
-    }
-
-    @Override
-    public void setValueAt(Object value, int row, int column) {
-        data[row][column] = value;
-        fireTableCellUpdated(row, column);
-
-       /* for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < columnNames.length; j++) {
-                System.out.print(data[i][j] + " || ");
-            }
-            System.out.println();
+        CountryInfo country = data.get(row); // Получаем объект CountryInfo из списка
+        switch (column) {
+            case 0:
+                return country;
+            case 1:
+                return country.getRegion();
+            case 2:
+                return country.getPopulation();
+            case 3:
+                return country.getForAgainst();
+            default:
+                return null;
         }
-        System.out.println("===============================================");*/
+    }
+    @Override
+    public void setValueAt(Object value, int row, int col) {
+
+        CountryInfo country = data.get(row); // Получаем объект CountryInfo из списка
+        country.setForAgainst((boolean) value);
+
+        fireTableCellUpdated(row,col);
 
     }
 
@@ -61,15 +61,15 @@ public class MyTableModel extends AbstractTableModel {
         switch(column){
 
             case 0:
+                return CountryInfo.class;
             case 1:
-            default:
                 return String.class;
-
             case 2:
                 return Integer.class;
-
             case 3:
                 return Boolean.class;
+            default:
+                return Object.class;
 
         }
     }
@@ -79,42 +79,18 @@ public class MyTableModel extends AbstractTableModel {
         return columnNames[column];
     }
 
-    private void setDataInArray(){
+    private void setData(){
+        data = new ArrayList<>();
 
-        CSVReader reader = new CSVReader();
-        reader.readCSV("data.csv", ",");
-
-        data = new Object[reader.getRowCount()][columnNames.length];
-
-        data = reader.getData();
-
-        for (int i = 0; i < reader.getRowCount(); i++) {
-            data[i][0] = unescapeEmojiCode(String.valueOf(data[i][0]));
-        }
+        data.add(new CountryInfo("Россия","Европа",150, true));
+        data.add(new CountryInfo("Германия","Европа",250, false));
+        data.add(new CountryInfo("Китай","Азия",1570, false));
+        data.add(new CountryInfo("Испания","Европа",129, false));
+        data.add(new CountryInfo("Аргентина","Америка",179, true));
 
     }
 
 
-    private static String unescapeEmojiCode(String text) {
-        StringBuilder result = new StringBuilder();
-
-        // Разделяем строку на коды символов и текст
-        String[] parts = text.split(" ");
-        for (String part : parts) {
-            if (part.startsWith("U+")) {
-                // Найден код эмоджи
-                String emojiCode = part.substring(2);
-                int codePoint = Integer.parseInt(emojiCode, 16);
-                String emoji = new String(Character.toChars(codePoint));
-                result.append(emoji);
-            } else {
-                // Обычный текст
-                result.append(part);
-            }
-        }
-
-        return result.toString();
-    }
 
 
 

@@ -119,6 +119,24 @@ public class MainUi extends JFrame {
         table.getColumnModel().getColumn(3).setCellRenderer(checkBoxRenderer);
         table.getColumnModel().getColumn(3).setCellEditor(new BooleanCheckBoxCellEditor());
 
+        TableCellRenderer countryRenderer = new DefaultTableCellRenderer(){
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                if (value instanceof CountryInfo) {
+                    CountryInfo country = (CountryInfo) value;
+                    JLabel label = new JLabel(country.getIcon());
+                    label.setText(country.getCountryName());
+                    label.setOpaque(true);
+                    label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                    label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                    label.setHorizontalAlignment(SwingConstants.LEFT);
+                    return label;
+                }
+                return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            }
+        };
+
+        table.getColumnModel().getColumn(0).setCellRenderer(countryRenderer);
 
 
     }

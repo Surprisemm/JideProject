@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов, чекбоксы пропали&#10;&#10;Последняя версия">
+    <list default="true" id="6b879a62-74e5-4acb-ade8-c3d67496d46c" name="Changes" comment="Поправил визуал">
+      <change afterPath="$PROJECT_DIR$/src/CountryInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +79,7 @@
       <workItem from="1686668894742" duration="679000" />
       <workItem from="1686677779128" duration="379000" />
       <workItem from="1686918069356" duration="327000" />
-      <workItem from="1686919157058" duration="396000" />
+      <workItem from="1686919157058" duration="4424000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <created>1686341612942</created>
@@ -130,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686658546604</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Поправил визуал">
+      <created>1686919742686</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686919742686</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +163,7 @@
     <MESSAGE value="csv работает, нужно добавить сортировку" />
     <MESSAGE value="csv работает, нужно добавить сортировку и флаги" />
     <MESSAGE value="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ну почти. вместо флагов вылезли буквы так как виндовс не поодерживает эмоджи флагов" />
+    <MESSAGE value="Поправил визуал" />
+    <option name="LAST_COMMIT_MESSAGE" value="Поправил визуал" />
   </component>
 </project>
