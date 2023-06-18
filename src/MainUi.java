@@ -1,28 +1,26 @@
 import com.jidesoft.grid.AutoFilterTableHeader;
 import com.jidesoft.grid.BooleanCheckBoxCellEditor;
-import com.jidesoft.grid.CellEditorManager;
 import com.jidesoft.grid.SortableTable;
 import com.jidesoft.swing.JideTabbedPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.tree.DefaultTreeCellEditor;
 import java.awt.*;
+
+
+/**
+ * Класс - основной, тут создается и настраивается внешний вид.
+ * Created by Nikita.Manzhukov on 16.06.2023
+ */
 
 public class MainUi extends JFrame {
 
-    private final int tablePadding = 10;
     private SortableTable table;
     private final GridBagConstraints gbc;
     private final JPanel tablePanel;
-    private final int rowData = 10;
-    private final int colData = 4;
-    private Object[][] data = new Object[rowData][colData];
-    private String[] columnNames = {"Название", "Регион", "Население", "За / Против"};
+    private final String[] columnNames = {"Название", "Регион", "Население", "За / Против"};
     public MainUi(){
 
         super("JideTableProject");
@@ -40,6 +38,7 @@ public class MainUi extends JFrame {
 
         tablePanel = new JPanel(new GridBagLayout());
 
+        int tablePadding = 10;
         tablePanel.setBorder(new EmptyBorder(tablePadding, tablePadding, tablePadding, tablePadding));
 
         gbc = new GridBagConstraints();
@@ -62,6 +61,9 @@ public class MainUi extends JFrame {
         MainUi mu = new  MainUi();
     }
 
+    /**
+     * Установка шрифта для всего проекта
+     */
     public static void setUIFont (javax.swing.plaf.FontUIResource f){
         java.util.Enumeration keys = UIManager.getDefaults().keys();
         while(keys.hasMoreElements()){
@@ -73,6 +75,9 @@ public class MainUi extends JFrame {
         }
     }
 
+    /**
+     * Создние сортируемой таблицы и установка модели для нее
+     */
     public void initTable(){
 
         JideTabbedPane tabbedPane = new JideTabbedPane();
@@ -95,6 +100,9 @@ public class MainUi extends JFrame {
 
     }
 
+    /**
+     * Настройка рендера ячеек в определенных колонках (1, 3, 4)
+     */
     private void myCellRender(){
 
         DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();

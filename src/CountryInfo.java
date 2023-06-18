@@ -1,10 +1,15 @@
 import javax.swing.*;
 
-public class CountryInfo {
-    private String name;
-    private ImageIcon icon;
-    private String region;
-    private int population;
+
+/**
+ * Класс - хранит информацию о странах
+ * Created by Nikita.Manzhukov on 16.06.2023
+ */
+public class CountryInfo implements Comparable<CountryInfo> {
+    private final String name;
+    private final ImageIcon icon;
+    private final String region;
+    private final int population;
     private boolean forAgainst;
 
     public CountryInfo (String name, String region, int population, boolean forAgainst){
@@ -13,6 +18,11 @@ public class CountryInfo {
         this.region = region;
         this.population = population;
         this.forAgainst = forAgainst;
+    }
+
+    @Override
+    public int compareTo(CountryInfo o) {
+        return this.getCountryName().compareTo(o.getCountryName());
     }
 
     public String getCountryName(){
@@ -39,6 +49,9 @@ public class CountryInfo {
         forAgainst = value;
     }
 
+    /**
+     * Иконка устанавливается по соответствию названия страны в таблице и имени файла картинки флага
+     */
     private ImageIcon getIconByName(String name) {
         String iconPath = "icons/" + name.toLowerCase() + ".png";
         return new ImageIcon(iconPath);

@@ -1,9 +1,14 @@
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
+
+/**
+ * Класс - модель таблицы, с основными настройками ее функционала
+ * Created by Nikita.Manzhukov on 16.06.2023
+ */
 public class MyTableModel extends AbstractTableModel {
     private ArrayList<CountryInfo> data;
-    private String[] columnNames;
+    private final String[] columnNames;
 
     public MyTableModel(String[] columnNames) {
 
@@ -26,7 +31,7 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        CountryInfo country = data.get(row); // Получаем объект CountryInfo из списка
+        CountryInfo country = data.get(row);
         switch (column) {
             case 0:
                 return country;
@@ -43,7 +48,7 @@ public class MyTableModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object value, int row, int col) {
 
-        CountryInfo country = data.get(row); // Получаем объект CountryInfo из списка
+        CountryInfo country = data.get(row);
         country.setForAgainst((boolean) value);
 
         fireTableCellUpdated(row,col);
@@ -55,6 +60,9 @@ public class MyTableModel extends AbstractTableModel {
         return column == columnNames.length - 1;
     }
 
+    /**
+     * Указываю какой тип данных должен содержаться в колонках таблицы
+     */
     @Override
     public Class<?> getColumnClass(int column) {
 
@@ -79,6 +87,9 @@ public class MyTableModel extends AbstractTableModel {
         return columnNames[column];
     }
 
+    /**
+     * Заполняю таблицу данными
+     */
     private void setData(){
         data = new ArrayList<>();
 
@@ -89,9 +100,5 @@ public class MyTableModel extends AbstractTableModel {
         data.add(new CountryInfo("Аргентина","Америка",179, true));
 
     }
-
-
-
-
 
 }
